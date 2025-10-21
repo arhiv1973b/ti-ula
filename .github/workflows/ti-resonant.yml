@@ -1,0 +1,27 @@
+name: TI-RESONANT Verification
+
+on:
+  push:
+    paths:
+      - '**.pdf'
+      - '**.json'
+      - '**.sig'
+      - 'TI-RESONANT-MANIFEST'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Verify Manifest Integrity
+        run: |
+          echo "🔍 Проверка TI-RESONANT-MANIFEST..."
+          while IFS= read -r line; do
+            [[ "$line" =~ ^[a-f0-9]{64} ]] || continue
+            checksum=$(echo "$line" | awk '{print $1}')
+            file=$(echo "$line" | awk '{print $2}')
+            echo "Проверка $file..."
+            echo "$checksum  $file" | sha256sum -c -
+          done < TI-RESONANT-MANIFEST

@@ -1,0 +1,15 @@
+{
+  "campaign": "Ti-Ula",
+  "author": "A©tor",
+  "signature": "⟪Алексей⟫",
+  "timestamp": "2025-10-21T18:09:00Z",
+  "manifest": "TI-RESONANT-MANIFEST",
+  "nodes": [
+    "AUTHORS.txt",
+    "manifest_signature.sig",
+    "README.md",
+    "build.sh",
+    "dispatch.sh",
+    "TI-RESONANT-MANIFEST"
+  ]
+}
